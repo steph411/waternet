@@ -1,0 +1,1 @@
+ALTER TABLE ONLY "public"."categories" ALTER COLUMN "id" DROP DEFAULT;

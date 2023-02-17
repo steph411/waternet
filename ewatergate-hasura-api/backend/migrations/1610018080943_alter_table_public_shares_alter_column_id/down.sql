@@ -1,0 +1,1 @@
+ALTER TABLE ONLY "public"."shares" ALTER COLUMN "id" DROP DEFAULT;

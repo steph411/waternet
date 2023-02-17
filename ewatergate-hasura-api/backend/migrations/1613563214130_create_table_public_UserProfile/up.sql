@@ -1,0 +1,1 @@
+CREATE TABLE "public"."UserProfile"("professional_summary" text, "work_experience" text, "education" text, "basic_information" text, "id" text NOT NULL DEFAULT gen_random_uuid(), "userId" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."users"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("userId"));

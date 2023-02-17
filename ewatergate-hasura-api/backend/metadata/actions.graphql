@@ -1,0 +1,27 @@
+type Mutation {
+  uploadMedia (
+    filename: String
+    post_id: String
+    comment_id: String
+    base64Str: String!
+  ): uploadOutput
+}
+
+
+
+
+input uploadInput {
+  filename : String
+  post_id : String
+  comment_id : String
+  base64Str : String!
+}
+
+input MessageFile {
+  link : String!
+}
+
+type uploadOutput {
+  link : String!
+}
+

@@ -1,0 +1,30 @@
+version: "3.9"
+
+# x-aws-loadbalancer: arn:aws:elasticloadbalancing:us-east-1:570528589545:loadbalancer/app/ewate-LoadB-GMJ7NKMBKER4/60b1a4bbff8f3224
+services:
+  graphql-ui:
+    deploy:
+      x-aws-autoscaling:
+        min: 3
+        max: 6
+    container_name: ewatergate_ui
+    image: 570528589545.dkr.ecr.us-east-1.amazonaws.com/ewatergate-ui:latest
+    ports:
+      - "80:80"
+x-aws-cloudformation:
+  Resources:
+    GraphqluiTCP443Listener:
+      Type: AWS::ElasticLoadBalancingV2::Listener
+      Properties:
+        DefaultActions:
+          - ForwardConfig:
+              TargetGroups:
+                - TargetGroupArn:
+                    Ref: GraphqluiTCP80TargetGroup
+            Type: forward
+        LoadBalancerArn:
+          Ref: LoadBalancer
+        Port: 443
+        Protocol: HTTPS
+        Certificates:
+          - CertificateArn: arn:aws:acm:us-east-1:570528589545:certificate/5ff1e2e1-4f07-448c-9ef4-10d602ab0ddd

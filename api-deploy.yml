@@ -1,0 +1,40 @@
+version: "3.9"
+
+# x-aws-loadbalancer: arn:aws:elasticloadbalancing:us-east-1:570528589545:loadbalancer/app/ewate-LoadB-GMJ7NKMBKER4/60b1a4bbff8f3224
+services:
+  graphql-api:
+    deploy:
+      x-aws-autoscaling:
+        min: 3
+        max: 6 #required
+    container_name: ewatergate_api
+    image: hasura/graphql-engine:latest
+    ports:
+      - "80:80"
+    environment:
+      HASURA_GRAPHQL_SERVER_PORT: "80"
+      HASURA_GRAPHQL_DATABASE_URL: postgres://ewatergate:ewatergate@ewatergate-db.c1bpnhaaexuq.us-east-1.rds.amazonaws.com:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: "public"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: ewatergate-api
+      HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS512", "key": "0ddf5597e02d981f8803c4cc11f015a4e52679d706edb29b595d9e466def5bcf95273a3053ab5d97ee893c23e4023b912daefaade316406a33b7685d4d223dfa", "claims_namespace": "api"}'
+
+x-aws-cloudformation:
+  Resources:
+    GraphqlapiTCP443Listener:
+      Type: AWS::ElasticLoadBalancingV2::Listener
+      Properties:
+        DefaultActions:
+          - ForwardConfig:
+              TargetGroups:
+                - TargetGroupArn:
+                    Ref: GraphqlapiTCP80TargetGroup
+            Type: forward
+        LoadBalancerArn:
+          Ref: LoadBalancer
+        Port: 443
+        Protocol: HTTPS
+        Certificates:
+          - CertificateArn: arn:aws:acm:us-east-1:570528589545:certificate/5ff1e2e1-4f07-448c-9ef4-10d602ab0ddd

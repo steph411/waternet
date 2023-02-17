@@ -1,0 +1,1 @@
+CREATE TABLE "public"."messages"("id" text NOT NULL DEFAULT gen_random_uuid(), "content" text NOT NULL, "date_added" timestamptz NOT NULL DEFAULT now(), "date_updated" timestamptz NOT NULL DEFAULT now(), "file" text, "userId" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."users"("id") ON UPDATE restrict ON DELETE restrict);

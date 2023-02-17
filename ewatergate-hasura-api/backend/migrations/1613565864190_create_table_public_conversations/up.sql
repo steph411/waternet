@@ -1,0 +1,1 @@
+CREATE TABLE "public"."conversations"("id" text NOT NULL DEFAULT gen_random_uuid(), "date_added" timestamptz NOT NULL DEFAULT now(), "date_updated" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") );

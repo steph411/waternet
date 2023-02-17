@@ -1,0 +1,49 @@
+version: "3.9"
+
+# x-aws-loadbalancer: arn:aws:elasticloadbalancing:us-east-1:570528589545:loadbalancer/app/ewate-LoadB-GMJ7NKMBKER4/60b1a4bbff8f3224
+services:
+  graphql-api:
+    x-aws-pull_credentials: ${HUB_PULL_SECRET}
+    container_name: ewatergate_ui
+    image: 570528589545.dkr.ecr.us-east-1.amazonaws.com/ewatergate-ui
+    ports:
+      - "80:80"
+    environment:
+      - FACEBOOK_APP_ID="382520189508127"
+      - FACEBOOK_APP_SECRET="93685504ccd159bf2f9eda10189aa041"
+
+      - GOOGLE_CLIENT_ID="1097569896511-4gbd6tpj4pg791vdbddvsnre3hte08od.apps.googleusercontent.com"
+      - GOOGLE_CLIENT_SECRET="X_NZw2T7uC0LbZGSHunfOtXs"
+
+      - NEXTAUTH_URL="https://ewatergate.com"
+      - AUTH_SECRET="0ddf5597e02d981f8803c4cc11f015a4e52679d706edb29b595d9e466def5bcf95273a3053ab5d97ee893c23e4023b912daefaade316406a33b7685d4d223dfa"
+      - JWT_SECRET="0ddf5597e02d981f8803c4cc11f015a4e52679d706edb29b595d9e466def5bcf95273a3053ab5d97ee893c23e4023b912daefaade316406a33b7685d4d223dfa"
+
+      - NEXT_PUBLIC_URL="https://ewatergate.com"
+      - NEXT_PUBLIC_API_URL="http://api.ewatergate.com/v1/graphql"
+
+      - NEXT_PUBLIC_SUBSCRIPTION_URL="ws://api.ewatergate.com/v1/graphql"
+
+      - NEXT_PUBLIC_API_SECRET="ewatergate-api"
+
+      - DATABASE_URL="postgres://ewatergate:ewatergate@ewatergate-db.c1bpnhaaexuq.us-east-1.rds.amazonaws.com:5432/postgres"
+
+      - AWS_ACCESS_KEY="AKIAYJVRHM3URDSBN2ZD"
+      - AWS_SECRET_KEY="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"
+# x-aws-cloudformation:
+#   Resources:
+#     GraphqlapiTCP443Listener:
+#       Type: AWS::ElasticLoadBalancingV2::Listener
+#       Properties:
+#         DefaultActions:
+#           - ForwardConfig:
+#               TargetGroups:
+#                 - TargetGroupArn:
+#                     Ref: GraphqlapiTCP443TargetGroup
+#             Type: forward
+#         LoadBalancerArn:
+#           Ref: LoadBalancer
+#         Port: 443
+#         Protocol: HTTPS
+#         Certificates:
+#           - CertificateArn: arn:aws:acm:us-east-1:570528589545:certificate/5ff1e2e1-4f07-448c-9ef4-10d602ab0ddd

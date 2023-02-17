@@ -1,0 +1,1 @@
+CREATE TABLE "public"."category_types"("id" text NOT NULL DEFAULT gen_random_uuid(), "name" text NOT NULL, PRIMARY KEY ("id") , UNIQUE ("name")); COMMENT ON TABLE "public"."category_types" IS E'category types , USER and TECHNICAL';

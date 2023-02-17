@@ -1,0 +1,1 @@
+ALTER TABLE ONLY "public"."pages" ALTER COLUMN "id" DROP DEFAULT;

@@ -1,0 +1,2173 @@
+- table:
+    schema: public
+    name: CategoryOnPosts
+  object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: category_id
+  - name: post
+    using:
+      foreign_key_constraint_on: post_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        post:
+          user_id:
+            _eq: X-Hasura-User-Id
+      columns:
+      - category_id
+      - post_id
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - post_id
+      - category_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: UserOnCategories
+  object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: category_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - category_id
+      - user_id
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - category_id
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - category_id
+      - user_id
+      - created_at
+      - updated_at
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: UserOnGroups
+  object_relationships:
+  - name: group
+    using:
+      foreign_key_constraint_on: group_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - group_id
+      - user_id
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - group_id
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - group_id
+      - user_id
+      - created_at
+      - updated_at
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: UserOnPages
+  object_relationships:
+  - name: page
+    using:
+      foreign_key_constraint_on: page_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - page_id
+      - user_id
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - page_id
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - page_id
+      - user_id
+      - created_at
+      - updated_at
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: UserProfile
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+      - basic_information
+      - cover_image
+      - created_at
+      - education
+      - id
+      - professional_summary
+      - services
+      - updated_at
+      - userId
+      - work_experience
+      backend_only: false
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - professional_summary
+      - work_experience
+      - education
+      - basic_information
+      - id
+      - userId
+      - services
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - basic_information
+      - cover_image
+      - created_at
+      - education
+      - id
+      - professional_summary
+      - services
+      - updated_at
+      - userId
+      - work_experience
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - basic_information
+      - cover_image
+      - created_at
+      - education
+      - id
+      - professional_summary
+      - services
+      - updated_at
+      - userId
+      - work_experience
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: _prisma_migrations
+- table:
+    schema: public
+    name: accounts
+- table:
+    schema: public
+    name: answers
+  object_relationships:
+  - name: question
+    using:
+      foreign_key_constraint_on: questionId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: answerId
+        table:
+          schema: public
+          name: comments
+  - name: views
+    using:
+      foreign_key_constraint_on:
+        column: answerId
+        table:
+          schema: public
+          name: views
+  - name: votes
+    using:
+      foreign_key_constraint_on:
+        column: answerId
+        table:
+          schema: public
+          name: votes
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - id
+      - questionId
+      - content
+      - userId
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - id
+      - questionId
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - created_at
+      - id
+      - questionId
+      - updated_at
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: categories
+  object_relationships:
+  - name: category_type
+    using:
+      foreign_key_constraint_on: category_type_id
+  - name: user_category
+    using:
+      foreign_key_constraint_on: user_category_id
+  array_relationships:
+  - name: CategoryOnPosts
+    using:
+      foreign_key_constraint_on:
+        column: category_id
+        table:
+          schema: public
+          name: CategoryOnPosts
+  - name: media_articles
+    using:
+      foreign_key_constraint_on:
+        column: categoryId
+        table:
+          schema: public
+          name: media_articles
+  - name: questions
+    using:
+      foreign_key_constraint_on:
+        column: categoryId
+        table:
+          schema: public
+          name: questions
+  - name: UserOnCategories
+    using:
+      foreign_key_constraint_on:
+        column: category_id
+        table:
+          schema: public
+          name: UserOnCategories
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - category_type_id
+      - id
+      - name
+      - user_category_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - category_type_id
+      - id
+      - name
+      - user_category_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: category_types
+  array_relationships:
+  - name: categories
+    using:
+      foreign_key_constraint_on:
+        column: category_type_id
+        table:
+          schema: public
+          name: categories
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - id
+      - name
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - id
+      - name
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: certifications
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+      - file_link
+      - id
+      - institution
+      - location
+      - title
+      - userId
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - id
+      - title
+      - location
+      - institution
+      - file_link
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - file_link
+      - id
+      - institution
+      - location
+      - title
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - file_link
+      - id
+      - institution
+      - location
+      - title
+      - userId
+      - created_at
+      - updated_at
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: comments
+  object_relationships:
+  - name: answer
+    using:
+      foreign_key_constraint_on: answerId
+  - name: comment
+    using:
+      foreign_key_constraint_on: parent_comment_id
+  - name: media_article
+    using:
+      foreign_key_constraint_on: articleId
+  - name: post
+    using:
+      foreign_key_constraint_on: postId
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: parent_comment_id
+        table:
+          schema: public
+          name: comments
+  - name: images
+    using:
+      foreign_key_constraint_on:
+        column: comment_id
+        table:
+          schema: public
+          name: images
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: comment_id
+        table:
+          schema: public
+          name: likes
+  - name: shares
+    using:
+      foreign_key_constraint_on:
+        column: comment_id
+        table:
+          schema: public
+          name: shares
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-User-Id
+      columns:
+      - answerId
+      - articleId
+      - created_at
+      - id
+      - parent_comment_id
+      - postId
+      - text
+      - updated_at
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - answerId
+      - articleId
+      - created_at
+      - id
+      - parent_comment_id
+      - postId
+      - text
+      - updated_at
+      - user_id
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - created_at
+      - id
+      - is_deleted
+      - parent_comment_id
+      - postId
+      - text
+      - updated_at
+      - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: connections
+  object_relationships:
+  - name: endUser
+    using:
+      foreign_key_constraint_on: destination_user_id
+  - name: user
+    using:
+      foreign_key_constraint_on: origin_user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        origin_user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - id
+      - origin_user_id
+      - destination_user_id
+      - accepted
+      - date_added
+      - date_updated
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - accepted
+      - destination_user_id
+      - id
+      - origin_user_id
+      - created_at
+      - date_added
+      - date_updated
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - accepted
+      - destination_user_id
+      - id
+      - origin_user_id
+      - created_at
+      - date_added
+      - date_updated
+      - updated_at
+      filter:
+        _or:
+        - destination_user_id:
+            _eq: X-Hasura-User-Id
+        - origin_user_id:
+            _eq: X-Hasura-User-Id
+      check:
+        _or:
+        - destination_user_id:
+            _eq: X-Hasura-User-Id
+        - origin_user_id:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: conversations
+  array_relationships:
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: conversationId
+        table:
+          schema: public
+          name: messages
+  - name: users
+    using:
+      foreign_key_constraint_on:
+        column: conversationId
+        table:
+          schema: public
+          name: user_conversations
+  insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+      - id
+      - date_added
+      - date_updated
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - created_at
+      - date_added
+      - date_updated
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - created_at
+      - date_added
+      - date_updated
+      - updated_at
+      filter:
+        users:
+          userId:
+            _eq: X-Hasura-User-Id
+      check:
+        users:
+          userId:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: digital_posts
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-User-Id
+      columns:
+      - id
+      - title
+      - content
+      - user_id
+      - created_at
+      - updated_at
+      - is_deleted
+      - original_post_id
+      - page_id
+      - group_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - group_id
+      - id
+      - is_deleted
+      - original_post_id
+      - page_id
+      - title
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - group_id
+      - id
+      - is_deleted
+      - original_post_id
+      - page_id
+      - title
+      - user_id
+      - created_at
+      - updated_at
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: groups
+  object_relationships:
+  - name: creator
+    using:
+      foreign_key_constraint_on: creator_id
+  array_relationships:
+  - name: images
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          schema: public
+          name: images
+  - name: posts
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          schema: public
+          name: posts
+  - name: UserOnGroups
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          schema: public
+          name: UserOnGroups
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        creator_id:
+          _eq: X-Hasura-User-Id
+      set:
+        creator_id: x-hasura-User-Id
+      columns:
+      - created_at
+      - creator_id
+      - description
+      - id
+      - image
+      - logo
+      - name
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - created_at
+      - creator_id
+      - description
+      - id
+      - image
+      - logo
+      - name
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - creator_id
+      - id
+      - image
+      - logo
+      - name
+      - created_at
+      - updated_at
+      filter:
+        creator_id:
+          _eq: X-Hasura-User-Id
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        creator_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: images
+  object_relationships:
+  - name: comment
+    using:
+      foreign_key_constraint_on: comment_id
+  - name: group
+    using:
+      foreign_key_constraint_on: group_id
+  - name: page
+    using:
+      foreign_key_constraint_on: page_id
+  - name: post
+    using:
+      foreign_key_constraint_on: post_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        post:
+          user_id:
+            _eq: X-Hasura-User-Id
+      columns:
+      - id
+      - link
+      - post_id
+      - group_id
+      - page_id
+      - created_at
+      - updated_at
+      - comment_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - link
+      - post_id
+      - group_id
+      - page_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - link
+      - post_id
+      - group_id
+      - page_id
+      - created_at
+      - updated_at
+      - comment_id
+      filter: {}
+      check: null
+- table:
+    schema: public
+    name: likes
+  object_relationships:
+  - name: comment
+    using:
+      foreign_key_constraint_on: comment_id
+  - name: media_article
+    using:
+      foreign_key_constraint_on: articleId
+  - name: post
+    using:
+      foreign_key_constraint_on: post_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - articleId
+      - comment_id
+      - id
+      - post_id
+      - user_id
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - articleId
+      - comment_id
+      - created_at
+      - id
+      - post_id
+      - updated_at
+      - user_id
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: media_articles
+  object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: categoryId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: articleId
+        table:
+          schema: public
+          name: comments
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: articleId
+        table:
+          schema: public
+          name: likes
+  - name: recommendations
+    using:
+      foreign_key_constraint_on:
+        column: articleId
+        table:
+          schema: public
+          name: recommendations
+  - name: shares
+    using:
+      foreign_key_constraint_on:
+        column: articleId
+        table:
+          schema: public
+          name: shares
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - categoryId
+      - content
+      - created_at
+      - description
+      - document
+      - id
+      - image
+      - title
+      - updated_at
+      - userId
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - categoryId
+      - content
+      - created_at
+      - description
+      - document
+      - id
+      - image
+      - title
+      - updated_at
+      - userId
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - description
+      - image
+      - title
+      - updated_at
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null
+- table:
+    schema: public
+    name: message_files
+  object_relationships:
+  - name: message
+    using:
+      foreign_key_constraint_on: messageId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        message:
+          userId:
+            _eq: X-Hasura-User-Id
+      columns:
+      - created_at
+      - id
+      - is_deleted
+      - link
+      - messageId
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - is_deleted
+      - id
+      - link
+      - messageId
+      - created_at
+      - updated_at
+      filter:
+        message:
+          conversation:
+            users:
+              userId:
+                _eq: X-Hasura-User-Id
+      allow_aggregations: true
+- table:
+    schema: public
+    name: messages
+  object_relationships:
+  - name: conversation
+    using:
+      foreign_key_constraint_on: conversationId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  array_relationships:
+  - name: files
+    using:
+      foreign_key_constraint_on:
+        column: messageId
+        table:
+          schema: public
+          name: message_files
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - content
+      - conversationId
+      - file
+      - id
+      - userId
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - content
+      - file
+      - userId
+      - created_at
+      - updated_at
+      - conversationId
+      filter: {}
+- table:
+    schema: public
+    name: pages
+  object_relationships:
+  - name: creator
+    using:
+      foreign_key_constraint_on: creator_id
+  array_relationships:
+  - name: images
+    using:
+      foreign_key_constraint_on:
+        column: page_id
+        table:
+          schema: public
+          name: images
+  - name: pages_projects
+    using:
+      foreign_key_constraint_on:
+        column: page_id
+        table:
+          schema: public
+          name: pages_projects
+  - name: posts
+    using:
+      foreign_key_constraint_on:
+        column: page_id
+        table:
+          schema: public
+          name: posts
+  - name: UserOnPages
+    using:
+      foreign_key_constraint_on:
+        column: page_id
+        table:
+          schema: public
+          name: UserOnPages
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        creator_id:
+          _eq: X-Hasura-User-Id
+      set:
+        creator_id: x-hasura-User-Id
+      columns:
+      - id
+      - name
+      - created_at
+      - updated_at
+      - image
+      - logo
+      - website
+      - overview
+      - specialities
+      - employees
+      - location
+      - services
+      - creator_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - name
+      - created_at
+      - updated_at
+      - image
+      - logo
+      - website
+      - overview
+      - specialities
+      - employees
+      - location
+      - services
+      - creator_id
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - employees
+      - services
+      - creator_id
+      - id
+      - image
+      - location
+      - logo
+      - name
+      - overview
+      - specialities
+      - website
+      - created_at
+      - updated_at
+      filter:
+        creator_id:
+          _eq: X-Hasura-User-Id
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        creator_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: pages_projects
+  object_relationships:
+  - name: page
+    using:
+      foreign_key_constraint_on: page_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        page:
+          creator_id:
+            _eq: X-Hasura-User-Id
+      columns:
+      - description
+      - id
+      - image
+      - link
+      - page_id
+      - title
+      backend_only: false
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - description
+      - id
+      - image
+      - link
+      - page_id
+      - title
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - id
+      - title
+      - description
+      - image
+      - link
+      - page_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - title
+      - description
+      - image
+      - link
+      - page_id
+      - created_at
+      - updated_at
+      filter:
+        page:
+          creator_id:
+            _eq: X-Hasura-User-Id
+      check: null
+- table:
+    schema: public
+    name: posts
+  object_relationships:
+  - name: group
+    using:
+      foreign_key_constraint_on: group_id
+  - name: original_post
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: posts
+        column_mapping:
+          original_post_id: id
+  - name: page
+    using:
+      foreign_key_constraint_on: page_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  array_relationships:
+  - name: CategoryOnPosts
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: CategoryOnPosts
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: postId
+        table:
+          schema: public
+          name: comments
+  - name: images
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: images
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: likes
+  - name: shares
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: shares
+  - name: videos
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: videos
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-User-Id
+      columns:
+      - content
+      - created_at
+      - id
+      - original_post_id
+      - title
+      - type
+      - updated_at
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - created_at
+      - id
+      - original_post_id
+      - title
+      - type
+      - updated_at
+      - user_id
+      filter:
+        _or:
+        - is_deleted:
+            _is_null: true
+        - is_deleted:
+            _eq: false
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - content
+      - created_at
+      - id
+      - is_deleted
+      - title
+      - updated_at
+      - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: questions
+  object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: categoryId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  array_relationships:
+  - name: answers
+    using:
+      foreign_key_constraint_on:
+        column: questionId
+        table:
+          schema: public
+          name: answers
+  - name: questions_followers
+    using:
+      foreign_key_constraint_on:
+        column: questionId
+        table:
+          schema: public
+          name: questions_followers
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - id
+      - userId
+      - categoryId
+      - topic
+      - content
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - categoryId
+      - content
+      - id
+      - topic
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - categoryId
+      - content
+      - id
+      - topic
+      - userId
+      - created_at
+      - updated_at
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: questions_followers
+  object_relationships:
+  - name: question
+    using:
+      foreign_key_constraint_on: questionId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - id
+      - questionId
+      - userId
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - questionId
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: recommendations
+  object_relationships:
+  - name: media_article
+    using:
+      foreign_key_constraint_on: articleId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - id
+      - articleId
+      - created_at
+      - updated_at
+      - userId
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - articleId
+      - id
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: scientific_articles
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+      - article_link
+      - created_at
+      - description
+      - file_link
+      - id
+      - image
+      - title
+      - updated_at
+      - userId
+      backend_only: false
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - id
+      - title
+      - description
+      - image
+      - file_link
+      - userId
+      - updated_at
+      - created_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - article_link
+      - created_at
+      - description
+      - file_link
+      - id
+      - image
+      - title
+      - updated_at
+      - userId
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - description
+      - file_link
+      - id
+      - image
+      - title
+      - userId
+      - created_at
+      - updated_at
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: sessions
+- table:
+    schema: public
+    name: shares
+  object_relationships:
+  - name: comment
+    using:
+      foreign_key_constraint_on: comment_id
+  - name: media_article
+    using:
+      foreign_key_constraint_on: articleId
+  - name: post
+    using:
+      foreign_key_constraint_on: post_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-User-Id
+      columns:
+      - articleId
+      - comment_id
+      - created_at
+      - id
+      - post_id
+      - updated_at
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - post_id
+      - user_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: user_categories
+  array_relationships:
+  - name: categories
+    using:
+      foreign_key_constraint_on:
+        column: user_category_id
+        table:
+          schema: public
+          name: categories
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - id
+      - name
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - id
+      - name
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: user_conversations
+  object_relationships:
+  - name: conversation
+    using:
+      foreign_key_constraint_on: conversationId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+      - conversationId
+      - id
+      - userId
+      - created_at
+      - date_added
+      - date_updated
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - userId
+      - conversationId
+      - date_added
+      - date_updated
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: users
+  object_relationships:
+  - name: UserProfile
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: UserProfile
+        column_mapping:
+          id: userId
+  array_relationships:
+  - name: answers
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: answers
+  - name: certifications
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: certifications
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: comments
+  - name: connectionRequests
+    using:
+      foreign_key_constraint_on:
+        column: origin_user_id
+        table:
+          schema: public
+          name: connections
+  - name: connections
+    using:
+      foreign_key_constraint_on:
+        column: destination_user_id
+        table:
+          schema: public
+          name: connections
+  - name: digital_posts
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: digital_posts
+  - name: groups
+    using:
+      foreign_key_constraint_on:
+        column: creator_id
+        table:
+          schema: public
+          name: groups
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: likes
+  - name: media_articles
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: media_articles
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: messages
+  - name: pages
+    using:
+      foreign_key_constraint_on:
+        column: creator_id
+        table:
+          schema: public
+          name: pages
+  - name: posts
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: posts
+  - name: questions
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: questions
+  - name: questions_followers
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: questions_followers
+  - name: recommendations
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: recommendations
+  - name: scientific_articles
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: scientific_articles
+  - name: shares
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: shares
+  - name: user_conversations
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: user_conversations
+  - name: UserOnCategories
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: UserOnCategories
+  - name: UserOnGroups
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: UserOnGroups
+  - name: UserOnPages
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: UserOnPages
+  - name: views
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: views
+  - name: votes
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: votes
+  - name: white_papers
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: white_papers
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - name
+      - firstname
+      - lastname
+      - password
+      - email
+      - email_verified
+      - image
+      - created_at
+      - updated_at
+      - city
+      - country
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - city
+      - country
+      - email
+      - firstname
+      - id
+      - image
+      - lastname
+      - name
+      - password
+      - created_at
+      - email_verified
+      - updated_at
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null
+      set:
+        id: x-hasura-User-Id
+- table:
+    schema: public
+    name: verification_requests
+- table:
+    schema: public
+    name: videos
+  object_relationships:
+  - name: post
+    using:
+      foreign_key_constraint_on: post_id
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - link
+      - post_id
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: views
+  object_relationships:
+  - name: answer
+    using:
+      foreign_key_constraint_on: answerId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - id
+      - answerId
+      - userId
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - answerId
+      - id
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: votes
+  object_relationships:
+  - name: answer
+    using:
+      foreign_key_constraint_on: answerId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+      - id
+      - userId
+      - answerId
+      - created_at
+      - updated_at
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - answerId
+      - id
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: white_papers
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+      - article_link
+      - created_at
+      - description
+      - file_link
+      - id
+      - image
+      - title
+      - updated_at
+      - userId
+      backend_only: false
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - id
+      - title
+      - description
+      - image
+      - file_link
+      - userId
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - article_link
+      - created_at
+      - description
+      - file_link
+      - id
+      - image
+      - title
+      - updated_at
+      - userId
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - description
+      - file_link
+      - id
+      - image
+      - title
+      - userId
+      - created_at
+      - updated_at
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
