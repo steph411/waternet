@@ -1,1 +1,0 @@
-ALTER TABLE ONLY "public"."likes" ALTER COLUMN "id" DROP DEFAULT;

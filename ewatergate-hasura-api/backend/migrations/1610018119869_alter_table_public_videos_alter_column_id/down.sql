@@ -1,1 +1,0 @@
-ALTER TABLE ONLY "public"."videos" ALTER COLUMN "id" DROP DEFAULT;

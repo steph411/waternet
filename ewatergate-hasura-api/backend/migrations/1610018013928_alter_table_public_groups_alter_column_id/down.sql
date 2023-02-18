@@ -1,1 +1,0 @@
-ALTER TABLE ONLY "public"."groups" ALTER COLUMN "id" DROP DEFAULT;

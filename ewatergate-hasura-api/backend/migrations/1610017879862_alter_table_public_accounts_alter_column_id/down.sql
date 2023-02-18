@@ -1,1 +1,0 @@
-ALTER TABLE ONLY "public"."accounts" ALTER COLUMN "id" DROP DEFAULT;

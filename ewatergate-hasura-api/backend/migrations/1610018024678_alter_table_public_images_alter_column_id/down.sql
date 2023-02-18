@@ -1,1 +1,0 @@
-ALTER TABLE ONLY "public"."images" ALTER COLUMN "id" DROP DEFAULT;

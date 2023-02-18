@@ -1,1 +1,0 @@
-CREATE TABLE "public"."pages_projects"("id" text NOT NULL DEFAULT gen_random_uuid(), "title" text NOT NULL, "description" text, "image" text, "link" text, "page_id" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("page_id") REFERENCES "public"."pages"("id") ON UPDATE restrict ON DELETE restrict); COMMENT ON TABLE "public"."pages_projects" IS E'projects of the page';

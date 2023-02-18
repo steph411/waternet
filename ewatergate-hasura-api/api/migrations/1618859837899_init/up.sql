@@ -1,3 +1,4 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto CASCADE;
 CREATE TYPE public."CategoryType" AS ENUM (
     'USER',
     'TECHNICAL'
@@ -42,7 +43,7 @@ CREATE TABLE public."UserProfile" (
     work_experience text,
     education text,
     basic_information text,
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "userId" text NOT NULL,
     services jsonb,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -60,7 +61,7 @@ CREATE TABLE public._prisma_migrations (
     applied_steps_count integer DEFAULT 0 NOT NULL
 );
 CREATE TABLE public.accounts (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     compound_id text NOT NULL,
     user_id text NOT NULL,
     provider_type text NOT NULL,
@@ -73,7 +74,7 @@ CREATE TABLE public.accounts (
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 CREATE TABLE public.answers (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "questionId" text NOT NULL,
     content text NOT NULL,
     "userId" text,
@@ -82,7 +83,7 @@ CREATE TABLE public.answers (
 );
 COMMENT ON TABLE public.answers IS 'answers for the question in the water answers part of the platform';
 CREATE TABLE public.categories (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     name text NOT NULL,
     user_category_id text,
     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -90,12 +91,12 @@ CREATE TABLE public.categories (
     category_type_id text NOT NULL
 );
 CREATE TABLE public.category_types (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     name text NOT NULL
 );
 COMMENT ON TABLE public.category_types IS 'category types , USER and TECHNICAL';
 CREATE TABLE public.certifications (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     title text NOT NULL,
     location text NOT NULL,
     institution text NOT NULL,
@@ -105,7 +106,7 @@ CREATE TABLE public.certifications (
     updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 CREATE TABLE public.comments (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     text text NOT NULL,
     user_id text NOT NULL,
     parent_comment_id text,
@@ -116,7 +117,7 @@ CREATE TABLE public.comments (
     "articleId" text
 );
 CREATE TABLE public.connections (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     origin_user_id text NOT NULL,
     destination_user_id text NOT NULL,
     accepted boolean DEFAULT false NOT NULL,
@@ -126,7 +127,7 @@ CREATE TABLE public.connections (
     updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 CREATE TABLE public.conversations (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     date_added timestamp with time zone DEFAULT now() NOT NULL,
     date_updated timestamp with time zone DEFAULT now() NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -146,7 +147,7 @@ CREATE TABLE public.digital_posts (
 );
 COMMENT ON TABLE public.digital_posts IS 'table for digital media posts';
 CREATE TABLE public.groups (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     name text NOT NULL,
     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -156,7 +157,7 @@ CREATE TABLE public.groups (
     description text
 );
 CREATE TABLE public.images (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     link text NOT NULL,
     post_id text,
     group_id text,
@@ -166,7 +167,7 @@ CREATE TABLE public.images (
     comment_id text
 );
 CREATE TABLE public.likes (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     post_id text,
     user_id text NOT NULL,
     comment_id text,
@@ -175,7 +176,7 @@ CREATE TABLE public.likes (
     "articleId" text
 );
 CREATE TABLE public.media_articles (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     title text NOT NULL,
     description text,
     image text,
@@ -188,7 +189,7 @@ CREATE TABLE public.media_articles (
 );
 COMMENT ON TABLE public.media_articles IS 'table for media articles';
 CREATE TABLE public.message_files (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "messageId" text NOT NULL,
     link text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -197,7 +198,7 @@ CREATE TABLE public.message_files (
 );
 COMMENT ON TABLE public.message_files IS 'table containing message files';
 CREATE TABLE public.messages (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     content text NOT NULL,
     file text,
     "userId" text NOT NULL,
@@ -206,7 +207,7 @@ CREATE TABLE public.messages (
     "conversationId" text
 );
 CREATE TABLE public.pages (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     name text NOT NULL,
     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -221,7 +222,7 @@ CREATE TABLE public.pages (
     creator_id text
 );
 CREATE TABLE public.pages_projects (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     title text NOT NULL,
     description text,
     image text,
@@ -232,7 +233,7 @@ CREATE TABLE public.pages_projects (
 );
 COMMENT ON TABLE public.pages_projects IS 'projects of the page';
 CREATE TABLE public.posts (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     title text,
     content text NOT NULL,
     user_id text NOT NULL,
@@ -245,7 +246,7 @@ CREATE TABLE public.posts (
     type text
 );
 CREATE TABLE public.questions (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "userId" text,
     "categoryId" text NOT NULL,
     topic text NOT NULL,
@@ -255,14 +256,14 @@ CREATE TABLE public.questions (
 );
 COMMENT ON TABLE public.questions IS 'table for questions in the water answers part of the platform';
 CREATE TABLE public.questions_followers (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "questionId" text NOT NULL,
     "userId" text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 CREATE TABLE public.recommendations (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "articleId" text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -270,7 +271,7 @@ CREATE TABLE public.recommendations (
 );
 COMMENT ON TABLE public.recommendations IS 'recommendations for media_articles';
 CREATE TABLE public.scientific_articles (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     title text NOT NULL,
     description text NOT NULL,
     image text NOT NULL,
@@ -281,7 +282,7 @@ CREATE TABLE public.scientific_articles (
     article_link text
 );
 CREATE TABLE public.sessions (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     user_id text NOT NULL,
     expires timestamp(3) without time zone NOT NULL,
     session_token text NOT NULL,
@@ -290,7 +291,7 @@ CREATE TABLE public.sessions (
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 CREATE TABLE public.shares (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     post_id text,
     user_id text NOT NULL,
     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -299,13 +300,13 @@ CREATE TABLE public.shares (
     "articleId" text
 );
 CREATE TABLE public.user_categories (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     name text NOT NULL,
     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 CREATE TABLE public.user_conversations (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "userId" text NOT NULL,
     "conversationId" text NOT NULL,
     date_added timestamp with time zone DEFAULT now() NOT NULL,
@@ -315,7 +316,7 @@ CREATE TABLE public.user_conversations (
     is_deleted boolean DEFAULT false
 );
 CREATE TABLE public.users (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     name text,
     firstname text,
     lastname text,
@@ -329,7 +330,7 @@ CREATE TABLE public.users (
     country text
 );
 CREATE TABLE public.verification_requests (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     identifier text NOT NULL,
     token text NOT NULL,
     expires timestamp(3) without time zone NOT NULL,
@@ -337,14 +338,14 @@ CREATE TABLE public.verification_requests (
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 CREATE TABLE public.videos (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     link text NOT NULL,
     post_id text NOT NULL,
     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 CREATE TABLE public.views (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "answerId" text,
     "userId" text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -352,14 +353,14 @@ CREATE TABLE public.views (
 );
 COMMENT ON TABLE public.views IS 'table to store views for answers';
 CREATE TABLE public.votes (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     "userId" text NOT NULL,
     "answerId" text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 CREATE TABLE public.white_papers (
-    id text DEFAULT public.gen_random_uuid() NOT NULL,
+    id text DEFAULT gen_random_uuid() NOT NULL,
     title text NOT NULL,
     description text NOT NULL,
     image text NOT NULL,
@@ -449,18 +450,18 @@ ALTER TABLE ONLY public.votes
     ADD CONSTRAINT votes_pkey PRIMARY KEY ("userId", "answerId", id);
 ALTER TABLE ONLY public.white_papers
     ADD CONSTRAINT white_papers_pkey PRIMARY KEY (id);
-CREATE UNIQUE INDEX "accounts.compound_id_unique" ON public.accounts USING btree (compound_id);
-CREATE UNIQUE INDEX "categories.name_unique" ON public.categories USING btree (name);
-CREATE UNIQUE INDEX "groups.name_unique" ON public.groups USING btree (name);
-CREATE UNIQUE INDEX "pages.name_unique" ON public.pages USING btree (name);
+CREATE UNIQUE INDEX "accounts_compound_id_unique" ON public.accounts USING btree (compound_id);
+CREATE UNIQUE INDEX "categories_name_unique" ON public.categories USING btree (name);
+CREATE UNIQUE INDEX "groups_name_unique" ON public.groups USING btree (name);
+CREATE UNIQUE INDEX "pages_name_unique" ON public.pages USING btree (name);
 CREATE INDEX "providerAccountId" ON public.accounts USING btree (provider_account_id);
 CREATE INDEX "providerId" ON public.accounts USING btree (provider_id);
-CREATE UNIQUE INDEX "sessions.access_token_unique" ON public.sessions USING btree (access_token);
-CREATE UNIQUE INDEX "sessions.session_token_unique" ON public.sessions USING btree (session_token);
+CREATE UNIQUE INDEX "sessions_access_token_unique" ON public.sessions USING btree (access_token);
+CREATE UNIQUE INDEX "sessions_session_token_unique" ON public.sessions USING btree (session_token);
 CREATE INDEX "userId" ON public.accounts USING btree (user_id);
-CREATE UNIQUE INDEX "user_categories.name_unique" ON public.user_categories USING btree (name);
-CREATE UNIQUE INDEX "users.email_unique" ON public.users USING btree (email);
-CREATE UNIQUE INDEX "verification_requests.token_unique" ON public.verification_requests USING btree (token);
+CREATE UNIQUE INDEX "user_categories_name_unique" ON public.user_categories USING btree (name);
+CREATE UNIQUE INDEX "users_email_unique" ON public.users USING btree (email);
+CREATE UNIQUE INDEX "verification_requests_token_unique" ON public.verification_requests USING btree (token);
 CREATE TRIGGER "set_public_UserProfile_updated_at" BEFORE UPDATE ON public."UserProfile" FOR EACH ROW EXECUTE FUNCTION public.set_current_timestamp_updated_at();
 COMMENT ON TRIGGER "set_public_UserProfile_updated_at" ON public."UserProfile" IS 'trigger to set value of column "updated_at" to current timestamp on row update';
 CREATE TRIGGER set_public_answers_updated_at BEFORE UPDATE ON public.answers FOR EACH ROW EXECUTE FUNCTION public.set_current_timestamp_updated_at();

@@ -1,1 +1,0 @@
-ALTER TABLE ONLY "public"."sessions" ALTER COLUMN "id" DROP DEFAULT;
