@@ -11,9 +11,13 @@ COPY package.json .
 
 COPY prisma ./prisma/
 
+RUN npm install
+
+RUN npm run build
+
 COPY ./.next ./.next
 # Install app dependencies
-RUN npm install
+# RUN npm install
 
 COPY prisma ./prisma/
 # Generate prisma client, leave out if generating in `postinstall` script
@@ -22,7 +26,7 @@ RUN prisma generate
 # RUN npm install
 COPY . . 
 
-RUN npm run build
+# RUN npm run build
 
 
 EXPOSE 80
