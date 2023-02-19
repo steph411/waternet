@@ -15,7 +15,9 @@ RUN npm install
 
 RUN npm run build
 
-COPY ./.next ./.next
+RUN ls -a
+
+COPY .next ./.next
 # Install app dependencies
 # RUN npm install
 
