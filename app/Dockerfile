@@ -29,6 +29,8 @@ FROM public.ecr.aws/bitnami/node:14-prod-debian-10
 
 ARG NODE_ENV="production"
 
+EXPOSE 80
+
 WORKDIR /app
 
 COPY package.json yarn.lock ./
@@ -39,7 +41,6 @@ RUN yarn install
 # wherever your tsc build output is
 COPY --from=build /app/.next .next
 
-USER node
 
 CMD yarn run start
 
