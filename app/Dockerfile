@@ -29,6 +29,8 @@ FROM public.ecr.aws/bitnami/node:14-prod-debian-10
 
 ARG NODE_ENV="production"
 
+WORKDIR /app
+
 COPY package.json yarn.lock ./
 
 # installs only production dependencies
