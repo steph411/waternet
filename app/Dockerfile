@@ -6,6 +6,8 @@ FROM public.ecr.aws/bitnami/node:14-prod-debian-10 AS build
 
 ARG NODE_ENV="development"
 
+ENV NEXT_PUBLIC_API_URL=https://waternet.hasura.app/v1/graphql
+
 WORKDIR /app
 
 COPY package.json yarn.lock tsconfig.json ./
@@ -14,8 +16,6 @@ COPY . .
 
 # installs both production and dev dependencies
 RUN yarn install
-
-RUN export NEXT_PUBLIC_API_URL=https://waternet.hasura.app/v1/graphql
 
 RUN yarn run build
 
