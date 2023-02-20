@@ -37,7 +37,7 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 # wherever your tsc build output is
-COPY --from=build .next .next
+COPY --from=build /app/.next .next
 
 USER node
 
