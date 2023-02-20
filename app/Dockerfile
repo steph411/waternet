@@ -1,42 +1,95 @@
-# FROM node:14.16.0
-FROM public.ecr.aws/bitnami/node:14-prod-debian-10
-# FROM public.ecr.aws/bitnami/node:14.16.0-debian-10-r8
-# FROM public.ecr.aws/bitnami/node:14.15.1-debian-10-r8
+###############
+# build stage #
+###############
 
-# RUN mkdir /app
+FROM public.ecr.aws/bitnami/node:14-prod-debian-10 AS build
 
-WORKDIR  /app
+ARG NODE_ENV="development"
 
-COPY package.json .
+WORKDIR /app
 
-COPY prisma ./prisma/
+COPY package.json yarn.lock tsconfig.json ./
 
-RUN npm install
+COPY . .
 
-RUN npm run build
+# installs both production and dev dependencies
+RUN yarn install
+
+RUN yarn run build
 
 RUN ls -a
 
-COPY .next .next
-# Install app dependencies
-# RUN npm install
+###############
+# final stage #
+###############
 
-COPY prisma ./prisma/
-# Generate prisma client, leave out if generating in `postinstall` script
-RUN npm install prisma -g
-RUN prisma generate
-# RUN npm install
-COPY . . 
+FROM public.ecr.aws/bitnami/node:14-prod-debian-10
 
+ARG NODE_ENV="production"
+
+COPY package.json yarn.lock ./
+
+# installs only production dependencies
+RUN yarn install
+
+# wherever your tsc build output is
+COPY --from=build ./.next ./.next
+
+USER node
+
+CMD yarn run start
+
+
+
+
+
+
+
+
+
+
+
+
+
+# FROM node:14.16.0
+# FROM public.ecr.aws/bitnami/node:14-prod-debian-10
+# # FROM public.ecr.aws/bitnami/node:14.16.0-debian-10-r8
+# # FROM public.ecr.aws/bitnami/node:14.15.1-debian-10-r8
+#
+# # RUN mkdir /app
+#
+# WORKDIR  /app
+#
+# COPY package.json .
+#
+# COPY prisma ./prisma/
+#
+# RUN npm install
+#
+# COPY . . 
+#
+# # RUN npm run build
 # RUN npm run build
-
-
-EXPOSE 80
-
-CMD [ "npm", "run", "start"]
-
-
-
+#
+# RUN ls -a
+#
+# COPY .next .next
+# # Install app dependencies
+# # RUN npm install
+#
+# COPY prisma ./prisma/
+# # Generate prisma client, leave out if generating in `postinstall` script
+# RUN npm install prisma -g
+# RUN prisma generate
+#
+#
+#
+# EXPOSE 80
+#
+# CMD [ "npm", "run", "start"]
+#
+#
+#
 
 # # Build the app
 # FROM node:14-alpine as build
