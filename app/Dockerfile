@@ -15,6 +15,8 @@ COPY . .
 # installs both production and dev dependencies
 RUN yarn install
 
+RUN export NEXT_PUBLIC_API_URL=https://waternet.hasura.app/v1/graphql
+
 RUN yarn run build
 
 RUN ls -a
