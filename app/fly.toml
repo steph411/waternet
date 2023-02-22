@@ -6,7 +6,7 @@ kill_timeout = 5
 processes = []
 
 [env]
-  NEXT_PUBLIC_API_URL=https://waternet.hasura.app/v1/graphql
+  NEXT_PUBLIC_API_URL = "https://waternet.hasura.app/v1/graphql"
 
 [experimental]
   auto_rollback = true
