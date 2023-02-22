@@ -14,7 +14,7 @@ import { TopSection } from "../components/TopSection";
 export default function Home() {
   const features = [
     {
-      image: "/image_1.png",
+      image: "/public/image_1.png",
       imageDescription: "growth image",
       title: "Reach your target audience and Grow your water business",
       description:

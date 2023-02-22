@@ -2,7 +2,7 @@
 # build stage #
 ###############
 
-FROM public.ecr.aws/bitnami/node:14-prod-debian-10 AS build
+FROM public.ecr.aws/bitnami/node:15-prod-debian-10 AS build
 
 ARG NODE_ENV="development"
 
@@ -25,7 +25,7 @@ RUN ls -a
 # final stage #
 ###############
 
-FROM public.ecr.aws/bitnami/node:14-prod-debian-10
+FROM public.ecr.aws/bitnami/node:15-prod-debian-10
 
 ARG NODE_ENV="production"
 
