@@ -22,7 +22,7 @@ export default function Home() {
       logo: GrowthLogo,
     },
     {
-      image: "/image_2.png",
+      image: "/public/image_2.png",
       imageDescription: "files logo",
       title:
         "Tackle your water & sanitation challenges from your mobile device",
@@ -31,7 +31,7 @@ export default function Home() {
       logo: FilesLogo,
     },
     {
-      image: "/image_3.png",
+      image: "/public/image_3.png",
       imageDescription: "connect image",
       title: "Connect & Build Professional Relationships to Grow your Career",
       description:
@@ -39,7 +39,7 @@ export default function Home() {
       logo: ConnectLogo,
     },
     {
-      image: "/image_4.png",
+      image: "/public/image_4.png",
       imageDescription: "learn image",
       title: "Learn and make money by sharing water knowledge ",
       description:

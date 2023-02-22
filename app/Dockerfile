@@ -2,7 +2,7 @@
 # build stage #
 ###############
 
-FROM public.ecr.aws/bitnami/node:15-prod-debian-10 AS build
+FROM public.ecr.aws/bitnami/node:15-prod-debian-10 AS builder
 
 ARG NODE_ENV="development"
 
@@ -14,6 +14,7 @@ COPY package.json yarn.lock tsconfig.json ./
 
 COPY . .
 
+ARG NEXT_PUBLIC_API_URL
 # installs both production and dev dependencies
 RUN yarn install
 
@@ -39,8 +40,9 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 # wherever your tsc build output is
-COPY --from=build /app/.next .next
+COPY --from=builder /app/.next .next
 
+COPY --from=builder /app/public ./public
 
 CMD yarn run start
 

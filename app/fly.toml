@@ -40,3 +40,6 @@ processes = []
 [[statics]]
   guest_path = "/app/public"
   url_prefix = "/public"
+
+[build.args]
+  NEXT_PUBLIC_API_URL = "https://waternet.hasura.app/v1/graphql"
