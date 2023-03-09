@@ -56,7 +56,7 @@ const MyApp = ({ Component, pageProps }) => {
     <Provider session={pageProps.session}>
       <>
         <Head>
-          <title>ewatergate</title>
+          <title>waternet</title>
           <link rel="icon" href="/icon_e2.png" />
         </Head>
         <Layout>

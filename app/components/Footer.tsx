@@ -22,11 +22,11 @@ const footerLinks = [
     href: "#home"
   },
   {
-    name: "explore eWaterGate",
+    name: "explore waternet",
     href: "#explore"
   },
   {
-    name: "eWaterGate features",
+    name: "waternet features",
     href: "#features"
   },
   {
@@ -38,11 +38,11 @@ const footerLinks = [
 const socialLinks = [
   {
     name: "Facebook",
-    href: "https://web.facebook.com/eWaterGate-114004693738639"
+    href: "https://web.facebook.com/waternet-114004693738639"
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/ewatergate1/"
+    href: "https://www.instagram.com/waternet1/"
   },
   {
     name: "Youtube",

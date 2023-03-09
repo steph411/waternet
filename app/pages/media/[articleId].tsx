@@ -94,12 +94,12 @@ const ArticlePage:React.FC = () => {
       action: console.log,
       link: `https://twitter.com/share?url=${encodeURIComponent(
         `${process.env.NEXT_PUBLIC_URL}/media/${articleData?.media_articles_by_pk?.id}`
-      )}&text=${"ewatergate"}`,
+      )}&text=${"waternet"}`,
     },
     {
       name: "whatsapp",
       action: console.log,
-      link: `https://wa.me/?text=${"ewatergate"} ${encodeURIComponent(
+      link: `https://wa.me/?text=${"waternet"} ${encodeURIComponent(
         `${process.env.NEXT_PUBLIC_URL}/media/${articleData?.media_articles_by_pk?.id}`
       )}`,
     },

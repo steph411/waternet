@@ -15,7 +15,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 const graphqlUrl = process.env.NEXT_PUBLIC_API_URL
 
-function createIsomorphicLink() {
+export function createIsomorphicLink() {
   
   console.log({ httplinkurl: graphqlUrl });
   return createHttpLink({ uri: graphqlUrl});

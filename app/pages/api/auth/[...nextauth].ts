@@ -185,7 +185,7 @@ export default async (req, res) => {
             "X-Hasura-Allowed-Roles": ["editor", "user", "public"],
             "X-Hasura-Default-Role": "public",
             "X-Hasura-User-Id": user.userId,
-            "X-Hasura-Org-Id": "ewatergate",
+            "X-Hasura-Org-Id": "waternet",
             "X-Hasura-Role": "user",
           };
         }
@@ -202,7 +202,7 @@ export default async (req, res) => {
           "X-Hasura-Allowed-Roles": ["editor", "user", "public"],
           "X-Hasura-Default-Role": "public",
           "X-Hasura-User-Id": user.userId,
-          "X-Hasura-Org-Id": "ewatergate",
+          "X-Hasura-Org-Id": "waternet",
           "X-Hasura-Role": "user",
         };
         session.rawToken = rawToken;

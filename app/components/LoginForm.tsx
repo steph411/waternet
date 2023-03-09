@@ -260,7 +260,7 @@ export const LoginForm: React.FC<Props> = ({
           <span className="font-semibold text-cold-gray-800">
             Cookies Policy
           </span>{" "}
-          of eWaterGate.
+          of waternet.
         </p>
 
         <button
@@ -282,8 +282,8 @@ export const LoginForm: React.FC<Props> = ({
             href=""
           >
             {type === LoginType.login
-              ? "New to eWaterGate? Sign Up"
-              : "Already on eWaterGate? Login"}
+              ? "New to waternet? Sign Up"
+              : "Already on waternet? Login"}
           </a>
         </Link>
       </form>

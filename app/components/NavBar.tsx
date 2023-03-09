@@ -18,7 +18,7 @@ export const NavBar: React.FC<Props> = ({
 }) => {
   const links = [
     {
-      name: "Explore ewatergate",
+      name: "Explore waternet",
       href: "#explore",
     },
     {

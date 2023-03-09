@@ -22,7 +22,7 @@ const ContactPage: React.FC = () => {
           <img src="/logo_ewater_2.png" className="w-64" />
         </div>
         <h3 className="py-4 text-lg font-semibold text-center text-light-blue-800">
-          eWaterGate is your partner of choice for water and environmental
+          waternet is your partner of choice for water and environmental
           projects
         </h3>
         <form className="space-y-6 form">

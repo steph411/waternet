@@ -18,7 +18,7 @@ export default function Home() {
       imageDescription: "growth image",
       title: "Reach your target audience and Grow your water business",
       description:
-        "Use eWaterGate's targeted water and environmental community to increase efficiency of your marketing campaigns. Create a free website in just 5 mins to increase your brand awareness and get more clients for your water or environmental business",
+        "Use waternet's targeted water and environmental community to increase efficiency of your marketing campaigns. Create a free website in just 5 mins to increase your brand awareness and get more clients for your water or environmental business",
       logo: GrowthLogo,
     },
     {
@@ -43,7 +43,7 @@ export default function Home() {
       imageDescription: "learn image",
       title: "Learn and make money by sharing water knowledge ",
       description:
-        "Create your free personalized page on eWaterGate and earn money being an online teacher, content creator or publisher. Share your knowledge and build credibility as a water and environmental expert while generating income.",
+        "Create your free personalized page on waternet and earn money being an online teacher, content creator or publisher. Share your knowledge and build credibility as a water and environmental expert while generating income.",
       logo: LearnLogo,
     },
   ];
@@ -51,13 +51,13 @@ export default function Home() {
   return (
     <main className="overflow-hidden bg-gray-50 max-w-screen">
       <TopSection />
-      <SectionTitle text="Explore eWaterGate" id="explore" />
+      <SectionTitle text="Explore waternet" id="explore" />
       <Features features={features} />
-      <SectionTitle text="eWaterGate Features" id="features" />
+      <SectionTitle text="waternet Features" id="features" />
       <FeaturesSlider />
       <SectionTitle text="Digital WaterTools" id="digital-tools" />
       <Videos />
-      <SectionTitle text="Join eWaterGate" />
+      <SectionTitle text="Join waternet" />
       <Authentication />
       <div className="py-24 text-center px-72 xl:px-32">
         <span className="text-lg font-semibold text-center bold-overline text-light-blue-900 ">

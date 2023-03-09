@@ -22,7 +22,7 @@ const CookiesPolicyPage: React.FC = () => {
       <TopSection noImage={true} searchBar={false}>
 
         <h2 className="w-3/4 pt-40 pb-32 mx-auto text-3xl font-bold text-white">
-          Ewatergate Privacy policy
+          waternet Privacy policy
         </h2>
       </TopSection>
       <div className="px-40 pb-12 -mt-56">
@@ -30,7 +30,7 @@ const CookiesPolicyPage: React.FC = () => {
           introduction 
         </TermsTitle> 
         <TermsText>
-          eWaterGate may use cookies, web beacons, tracking pixels, and other tracking technologies when you visit our website [www.ewatergate.com], including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the “Site”) to help customize the Site and improve your experience. <br/>
+          waternet may use cookies, web beacons, tracking pixels, and other tracking technologies when you visit our website [www.waternet.com], including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the “Site”) to help customize the Site and improve your experience. <br/>
 
           We reserve the right to make changes to this Cookie Policy at any time and for any reason. We will alert you about any changes by updating the “Last Updated” date of this Cookie Policy. Any changes or modifications will be effective immediately upon posting the updated Cookie Policy on the Site, and you waive the right to receive specific notice of each such change or modification. <br/>
 
@@ -94,7 +94,7 @@ const CookiesPolicyPage: React.FC = () => {
             authentication cookies
           </TermSubtitle>
           <TermsText>
-          We use cookies to recognize you when you visit our Services. If you’re signed into eWaterGate, cookies help us show you the right information and personalize your experience in line with your settings.
+          We use cookies to recognize you when you visit our Services. If you’re signed into waternet, cookies help us show you the right information and personalize your experience in line with your settings.
     
           </TermsText>
           <TermSubtitle>
@@ -177,7 +177,7 @@ const CookiesPolicyPage: React.FC = () => {
         <TermsText>
         If you have questions or comments about this Cookie Policy, please contact us at:<br/>
 
-          <a href="mailto:ewatergate@gmail.com">ewatergate@gmail.com</a>
+          <a href="mailto:etabalionel@gmail.com">waternet@gmail.com</a>
         </TermsText>
       </div>
       <FooterBottomBar/>

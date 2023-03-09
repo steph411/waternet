@@ -8,7 +8,7 @@ import AWS from 'aws-sdk'
 
 const AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY
 const AWS_SECRET_KEY = process.env.AWS_SECRET_KEY
-const AWS_BUCKET = "ewatergate"
+const AWS_BUCKET = "waternet"
 
 const s3 = new AWS.S3({
   accessKeyId: AWS_ACCESS_KEY,

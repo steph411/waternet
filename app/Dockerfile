@@ -14,6 +14,11 @@ COPY package.json yarn.lock tsconfig.json ./
 
 COPY . .
 
+COPY prisma ./prisma/
+# Generate prisma client, leave out if generating in `postinstall` script
+RUN yarn global add prisma
+RUN prisma generate
+
 ARG NEXT_PUBLIC_API_URL
 # installs both production and dev dependencies
 RUN yarn install

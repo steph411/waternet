@@ -97,12 +97,12 @@ const Post: React.FC<Props> = ({ post, user, refObserved, refetch }) => {
       action: console.log,
       link: `https://twitter.com/share?url=${encodeURIComponent(
         `${process.env.NEXT_PUBLIC_URL}/feed/${post?.id}`
-      )}&text=${"ewatergate"}`,
+      )}&text=${"waternet"}`,
     },
     {
       name: "whatsapp",
       action: console.log,
-      link: `https://wa.me/?text=${"ewatergate"} ${encodeURIComponent(
+      link: `https://wa.me/?text=${"waternet"} ${encodeURIComponent(
         `${process.env.NEXT_PUBLIC_URL}/feed/${post?.id}`
       )}`,
     },

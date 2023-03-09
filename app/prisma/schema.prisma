@@ -5,8 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  // url      = "postgres://ewatergate:ewatergate@ewatergate-db.c1bpnhaaexuq.us-east-1.rds.amazonaws.com:5432/postgres"
-  url = "postgres://ewatergate:ewatergate@localhost:8899/ewatergate"
+  url = env("NEXT_DATABASE_URL")
 }
 
 model Account {

@@ -68,7 +68,7 @@ const Preferences: React.FC<Props> = ({}) => {
     <section className="text-center bg-cold-gray-50">
       <TopSection noImage={true}>
         <h2 className="w-3/4 pt-40 pb-32 mx-auto text-3xl font-bold text-white lg:w-full">
-          eWatergate wants to give you the best experience. Select user and
+          waternet wants to give you the best experience. Select user and
           technical categories to connect to the right audience
         </h2>
       </TopSection>
